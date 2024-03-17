@@ -11,6 +11,8 @@ namespace AdventureBot.Models
         public int Id { get; set; }
         public Guid PlayerId { get; set; }
         public string? Name { get; set; }
+        public string? RaceAvatarUrl { get; set; }
+        public string? ProfessionAvatarUrl { get; set; }
         public uint Xp { get; set; }
         public double Luck { get; set; }
         public Profession Profession { get; set; }
