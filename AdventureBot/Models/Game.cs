@@ -14,5 +14,7 @@ namespace AdventureBot.Models
         public string? Description { get; set; }
         public int MaxPlayers { get; set; } = 4;
         public Player[]? Players { get; set; }
+        public string? CreatedAt { get; set; }
+
     }
 }

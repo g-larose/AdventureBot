@@ -12,7 +12,6 @@ namespace AdventureBot.Commands
         [Description("starts a new adventure game")]
         public async Task NewGame(CommandEvent invokator)
         {
-
             var authorId = invokator.Message.CreatedBy;
             var serverId = invokator.ServerId;
             var author = await invokator.ParentClient.GetMemberAsync((HashId)serverId!, authorId);
