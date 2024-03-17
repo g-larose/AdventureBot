@@ -24,7 +24,8 @@ namespace AdventureBot
         {
             await using var client = new GuildedBotClient(token!)
                 .AddCommands(new MemberCommands(), prefix!)
-                .AddCommands(new MemberCommands(), prefix!);
+                .AddCommands(new MemberCommands(), prefix!)
+                .AddCommands(new GameCommands(), prefix!);
 
 
             client.Prepared
