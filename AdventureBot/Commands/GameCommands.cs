@@ -1,4 +1,5 @@
-﻿using Guilded.Base;
+﻿using AdventureBot.Services;
+using Guilded.Base;
 using Guilded.Base.Embeds;
 using Guilded.Commands;
 using System.Drawing;
@@ -12,6 +13,7 @@ namespace AdventureBot.Commands
         [Description("starts a new adventure game")]
         public async Task NewGame(CommandEvent invokator)
         {
+
             var authorId = invokator.Message.CreatedBy;
             var serverId = invokator.ServerId;
             var author = await invokator.ParentClient.GetMemberAsync((HashId)serverId!, authorId);
@@ -37,7 +39,15 @@ namespace AdventureBot.Commands
             }
             else
             {
-
+                using var gameDataProvider = new GameDataProviderService();
+                var prof = gameDataProvider.SetPlayerProfessionAvatar(profession);
+                if (prof.HasValue)
+                {
+                    var embed = new Embed();
+                    embed.SetThumbnail(prof.GetValueOrDefault().Value);
+                    await invokator.ReplyAsync(embed);
+                }
+                
             }
         }
         #endregion
